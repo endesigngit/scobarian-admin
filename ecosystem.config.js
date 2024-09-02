@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "scobarian-admin",
+      name: "skobarian-admin",
       script: "npm",
       args: "start",
     },
