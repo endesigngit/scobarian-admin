@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_entities",
+  "info": {
+    "singularName": "test-entity",
+    "pluralName": "test-entities",
+    "displayName": "Test-entity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "goods",
+  "info": {
+    "singularName": "good",
+    "pluralName": "goods",
+    "displayName": "Goods",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "integer"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "type": {
+      "type": "customField",
+      "options": [
+        "Худи",
+        "Бомбер",
+        "Футболка",
+        "Толстовка"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "gender": {
+      "type": "customField",
+      "options": [
+        "Мужчинам",
+        "Женщинам"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "item_goods": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::item-good.item-good",
+      "mappedBy": "good"
+    },
+    "care": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    },
+    "compound": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
+    }
+  }
+}

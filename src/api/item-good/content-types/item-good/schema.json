@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "item_goods",
+  "info": {
+    "singularName": "item-good",
+    "pluralName": "item-goods",
+    "displayName": "ItemGoods",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "size": {
+      "type": "string",
+      "required": true
+    },
+    "color": {
+      "type": "string",
+      "required": true
+    },
+    "good": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::good.good",
+      "inversedBy": "item_goods"
+    },
+    "count": {
+      "type": "integer",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "discount": {
+      "type": "integer"
+    }
+  }
+}
