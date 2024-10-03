@@ -362,139 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGoodGood extends Schema.CollectionType {
-  collectionName: 'goods';
-  info: {
-    singularName: 'good';
-    pluralName: 'goods';
-    displayName: 'Goods';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    price: Attribute.Integer;
-    slug: Attribute.UID & Attribute.Required;
-    type: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          '\u0425\u0443\u0434\u0438',
-          '\u0411\u043E\u043C\u0431\u0435\u0440',
-          '\u0424\u0443\u0442\u0431\u043E\u043B\u043A\u0430',
-          '\u0422\u043E\u043B\u0441\u0442\u043E\u0432\u043A\u0430'
-        ]
-      >;
-    gender: Attribute.JSON &
-      Attribute.CustomField<
-        'plugin::multi-select.multi-select',
-        [
-          '\u041C\u0443\u0436\u0447\u0438\u043D\u0430\u043C',
-          '\u0416\u0435\u043D\u0449\u0438\u043D\u0430\u043C'
-        ]
-      >;
-    item_goods: Attribute.Relation<
-      'api::good.good',
-      'oneToMany',
-      'api::item-good.item-good'
-    >;
-    care: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'semicolon';
-        }
-      >;
-    compound: Attribute.Text &
-      Attribute.CustomField<
-        'plugin::string-array.input',
-        {
-          separator: 'semicolon';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::good.good', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::good.good', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiItemGoodItemGood extends Schema.CollectionType {
-  collectionName: 'item_goods';
-  info: {
-    singularName: 'item-good';
-    pluralName: 'item-goods';
-    displayName: 'ItemGoods';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    size: Attribute.String & Attribute.Required;
-    color: Attribute.String & Attribute.Required;
-    good: Attribute.Relation<
-      'api::item-good.item-good',
-      'manyToOne',
-      'api::good.good'
-    >;
-    count: Attribute.Integer & Attribute.Required;
-    images: Attribute.Media<'images', true> & Attribute.Required;
-    discount: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::item-good.item-good',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::item-good.item-good',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestEntityTestEntity extends Schema.CollectionType {
-  collectionName: 'test_entities';
-  info: {
-    singularName: 'test-entity';
-    pluralName: 'test-entities';
-    displayName: 'Test-entity';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Name: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::test-entity.test-entity',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::test-entity.test-entity',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -921,6 +788,172 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiFeedbackFeedback extends Schema.CollectionType {
+  collectionName: 'feedbacks';
+  info: {
+    singularName: 'feedback';
+    pluralName: 'feedbacks';
+    displayName: 'Feedback';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String & Attribute.Required;
+    userPhone: Attribute.String & Attribute.Required;
+    userEmail: Attribute.Email;
+    userText: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::feedback.feedback',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGoodGood extends Schema.CollectionType {
+  collectionName: 'goods';
+  info: {
+    singularName: 'good';
+    pluralName: 'goods';
+    displayName: 'Goods';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.Integer;
+    slug: Attribute.UID & Attribute.Required;
+    type: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          '\u0425\u0443\u0434\u0438',
+          '\u0411\u043E\u043C\u0431\u0435\u0440',
+          '\u0424\u0443\u0442\u0431\u043E\u043B\u043A\u0430',
+          '\u0422\u043E\u043B\u0441\u0442\u043E\u0432\u043A\u0430'
+        ]
+      >;
+    gender: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        [
+          '\u041C\u0443\u0436\u0447\u0438\u043D\u0430\u043C',
+          '\u0416\u0435\u043D\u0449\u0438\u043D\u0430\u043C'
+        ]
+      >;
+    item_goods: Attribute.Relation<
+      'api::good.good',
+      'oneToMany',
+      'api::item-good.item-good'
+    >;
+    care: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    compound: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::good.good', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::good.good', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiItemGoodItemGood extends Schema.CollectionType {
+  collectionName: 'item_goods';
+  info: {
+    singularName: 'item-good';
+    pluralName: 'item-goods';
+    displayName: 'ItemGoods';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    size: Attribute.String & Attribute.Required;
+    color: Attribute.String & Attribute.Required;
+    good: Attribute.Relation<
+      'api::item-good.item-good',
+      'manyToOne',
+      'api::good.good'
+    >;
+    count: Attribute.Integer & Attribute.Required;
+    images: Attribute.Media<'images', true> & Attribute.Required;
+    discount: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::item-good.item-good',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::item-good.item-good',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestEntityTestEntity extends Schema.CollectionType {
+  collectionName: 'test_entities';
+  info: {
+    singularName: 'test-entity';
+    pluralName: 'test-entities';
+    displayName: 'Test-entity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-entity.test-entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-entity.test-entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -931,9 +964,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::good.good': ApiGoodGood;
-      'api::item-good.item-good': ApiItemGoodItemGood;
-      'api::test-entity.test-entity': ApiTestEntityTestEntity;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -942,6 +972,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::feedback.feedback': ApiFeedbackFeedback;
+      'api::good.good': ApiGoodGood;
+      'api::item-good.item-good': ApiItemGoodItemGood;
+      'api::test-entity.test-entity': ApiTestEntityTestEntity;
     }
   }
 }
