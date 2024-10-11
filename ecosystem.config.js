@@ -3,6 +3,7 @@ module.exports = {
     {
       name: "skobarian-admin",
       script: "npm",
+      // args: 'develop',
       args: "start",
     },
   ],

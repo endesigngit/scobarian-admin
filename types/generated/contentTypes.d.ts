@@ -924,6 +924,40 @@ export interface ApiItemGoodItemGood extends Schema.CollectionType {
   };
 }
 
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Orders';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String & Attribute.Required;
+    userPhone: Attribute.String & Attribute.Required;
+    userEmail: Attribute.Email;
+    userText: Attribute.Text;
+    products: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTestEntityTestEntity extends Schema.CollectionType {
   collectionName: 'test_entities';
   info: {
@@ -975,6 +1009,7 @@ declare module '@strapi/types' {
       'api::feedback.feedback': ApiFeedbackFeedback;
       'api::good.good': ApiGoodGood;
       'api::item-good.item-good': ApiItemGoodItemGood;
+      'api::order.order': ApiOrderOrder;
       'api::test-entity.test-entity': ApiTestEntityTestEntity;
     }
   }
