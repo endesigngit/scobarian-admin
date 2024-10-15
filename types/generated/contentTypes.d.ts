@@ -896,8 +896,6 @@ export interface ApiItemGoodItemGood extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    size: Attribute.String & Attribute.Required;
-    color: Attribute.String & Attribute.Required;
     good: Attribute.Relation<
       'api::item-good.item-good',
       'manyToOne',
@@ -906,6 +904,19 @@ export interface ApiItemGoodItemGood extends Schema.CollectionType {
     count: Attribute.Integer & Attribute.Required;
     images: Attribute.Media<'images', true> & Attribute.Required;
     discount: Attribute.Integer;
+    size: Attribute.Enumeration<['L', 'M', 'S', 'XS', 'XL']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'L'>;
+    color: Attribute.Enumeration<
+      [
+        '\u0427\u0435\u0440\u043D\u044B\u0439',
+        '\u041C\u043E\u043B\u043E\u0447\u043D\u044B\u0439',
+        '\u0418\u043D\u0434\u0438\u0433\u043E',
+        '\u0421\u0442\u0430\u043B\u044C'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'\u0427\u0435\u0440\u043D\u044B\u0439'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

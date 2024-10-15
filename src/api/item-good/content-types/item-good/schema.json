@@ -16,14 +16,6 @@
       "type": "string",
       "required": true
     },
-    "size": {
-      "type": "string",
-      "required": true
-    },
-    "color": {
-      "type": "string",
-      "required": true
-    },
     "good": {
       "type": "relation",
       "relation": "manyToOne",
@@ -44,6 +36,29 @@
     },
     "discount": {
       "type": "integer"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "L",
+        "M",
+        "S",
+        "XS",
+        "XL"
+      ],
+      "default": "L",
+      "required": true
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "Черный",
+        "Молочный",
+        "Индиго",
+        "Сталь"
+      ],
+      "default": "Черный",
+      "required": true
     }
   }
 }
