@@ -835,7 +835,7 @@ export interface ApiGoodGood extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     price: Attribute.Integer;
-    slug: Attribute.UID & Attribute.Required;
+    slug: Attribute.UID<'api::good.good', 'name'> & Attribute.Required;
     type: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
