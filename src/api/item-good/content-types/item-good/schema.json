@@ -4,7 +4,7 @@
   "info": {
     "singularName": "item-good",
     "pluralName": "item-goods",
-    "displayName": "ItemGoods",
+    "displayName": "Продукт",
     "description": ""
   },
   "options": {
@@ -58,6 +58,15 @@
         "Сталь"
       ],
       "default": "Черный",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "Мужчинам",
+        "Женщинам"
+      ],
+      "default": "Мужчинам",
       "required": true
     }
   }

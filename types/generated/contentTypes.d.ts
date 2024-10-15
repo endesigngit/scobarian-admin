@@ -826,7 +826,7 @@ export interface ApiGoodGood extends Schema.CollectionType {
   info: {
     singularName: 'good';
     pluralName: 'goods';
-    displayName: 'Goods';
+    displayName: '\u0422\u0438\u043F \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430';
     description: '';
   };
   options: {
@@ -895,7 +895,7 @@ export interface ApiItemGoodItemGood extends Schema.CollectionType {
   info: {
     singularName: 'item-good';
     pluralName: 'item-goods';
-    displayName: 'ItemGoods';
+    displayName: '\u041F\u0440\u043E\u0434\u0443\u043A\u0442';
     description: '';
   };
   options: {
@@ -924,6 +924,14 @@ export interface ApiItemGoodItemGood extends Schema.CollectionType {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'\u0427\u0435\u0440\u043D\u044B\u0439'>;
+    gender: Attribute.Enumeration<
+      [
+        '\u041C\u0443\u0436\u0447\u0438\u043D\u0430\u043C',
+        '\u0416\u0435\u043D\u0449\u0438\u043D\u0430\u043C'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'\u041C\u0443\u0436\u0447\u0438\u043D\u0430\u043C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
