@@ -873,6 +873,13 @@ export interface ApiGoodGood extends Schema.CollectionType {
           separator: 'semicolon';
         }
       >;
+    material: Attribute.Text &
+      Attribute.CustomField<
+        'plugin::string-array.input',
+        {
+          separator: 'semicolon';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

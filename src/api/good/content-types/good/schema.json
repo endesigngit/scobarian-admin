@@ -61,6 +61,13 @@
         "separator": "semicolon"
       },
       "customField": "plugin::string-array.input"
+    },
+    "material": {
+      "type": "customField",
+      "options": {
+        "separator": "semicolon"
+      },
+      "customField": "plugin::string-array.input"
     }
   }
 }
