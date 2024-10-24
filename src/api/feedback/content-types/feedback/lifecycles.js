@@ -26,7 +26,7 @@ module.exports = {
   ` : ""
   const textHtml = text ? `
     <div>
-      <span>Компания:</span>
+      <span>Сообщение:</span>
       <span>${text}</span>
     </div>
   ` : ""
@@ -45,7 +45,6 @@ module.exports = {
           ${textHtml}
         </div>
         `,
-      // text: 'Получено новое сообщение! Подробнее на <a href="http://admin.skobarian.ru/">admin</a>',
     });
   },
 };
