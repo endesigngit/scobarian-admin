@@ -35,6 +35,7 @@ module.exports = {
   const productsHtml = text ? `
     <div>
       <span>Корзина:</span>
+      <br>
       <span>${products}</span>
     </div>
   ` : ""
