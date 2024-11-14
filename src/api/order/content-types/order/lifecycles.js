@@ -44,8 +44,7 @@ module.exports = {
 
     
     strapi.plugins['email'].services['email'].send({
-      // to: ['chernyshov@endesign.ru', 'mikhailov@pskovlive.ru'],
-      to: ['chernyshov@endesign.ru'],
+      to: ['chernyshov@endesign.ru', 'mikhailov@pskovlive.ru'],
       from: 'no-reply@skobarian.ru',
       subject: "Заказ с сайта skobarian.ru",
       html: `
