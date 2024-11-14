@@ -8,6 +8,13 @@ module.exports = {
     const text = params.data.userText
     const products = params.data.products
 
+    function getProductsHTML (allProducts){
+      const prodArr = allProducts.split(';').map((item)=>{
+        return `<p>${item}</p>`
+      })
+      return prodArr.join('')
+    }
+
     const nameHtml = name ? `
     <div>
       <span>Имя:</span>
@@ -32,16 +39,13 @@ module.exports = {
       <span>${text}</span>
     </div>
   ` : ""
-  const productsHtml = text ? `
-    <div>
-      <span>Корзина:</span>
-      <br>
-      <span>${products}</span>
-    </div>
-  ` : ""
+  const productsHtml = getProductsHTML(products)
+
+
     
     strapi.plugins['email'].services['email'].send({
-      to: ['chernyshov@endesign.ru', 'mikhailov@pskovlive.ru'],
+      // to: ['chernyshov@endesign.ru', 'mikhailov@pskovlive.ru'],
+      to: ['chernyshov@endesign.ru'],
       from: 'no-reply@skobarian.ru',
       subject: "Заказ с сайта skobarian.ru",
       html: `
@@ -52,7 +56,11 @@ module.exports = {
         ${emailHtml}
         ${phoneHtml}
         ${textHtml}
-        ${productsHtml}
+        <div>
+          <span>Корзина:</span>
+          <br>
+          ${productsHtml}
+        </div>
       </div>
       `,
     });
